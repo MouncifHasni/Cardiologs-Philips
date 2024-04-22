@@ -31,7 +31,7 @@ def process_ecg():
     except pd.errors.ParserError as e:
         return jsonify({'error': "Error processing file."}), 500
 
-    # Calculate the premature counts for P waves and QRS complexes
+    # Calculate the premature counts for P waves and QRS
     premature_p_count = df[(df['Wave type'] == 'P') & (df['Wave tags'].str.contains('premature', na=False))].shape[0]
     premature_qrs_count = df[(df['Wave type'] == 'QRS') & (df['Wave tags'].str.contains('premature', na=False))].shape[0]
 
